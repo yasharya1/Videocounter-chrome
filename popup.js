@@ -6,6 +6,34 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentY;
     let initialX;
     let initialY;
+    const toggle = document.getElementById('dark-mode-toggle');
+    const lightModeIcon = document.getElementById('light-mode-icon');
+    const darkModeIcon = document.getElementById('dark-mode-icon');
+
+
+    // Load and apply dark mode preference
+    chrome.storage.local.get(['darkMode'], function(result) {
+        if (result.darkMode) {
+            container.classList.add('dark-mode');
+            lightModeIcon.style.display = 'none';
+            darkModeIcon.style.display = 'block';
+        }
+    });
+
+ 
+    lightModeIcon.addEventListener('click', function() {
+        container.classList.add('dark-mode');
+        chrome.storage.local.set({ darkMode: true });
+        lightModeIcon.style.display = 'none';
+        darkModeIcon.style.display = 'block';
+    });
+
+    darkModeIcon.addEventListener('click', function() {
+        container.classList.remove('dark-mode');
+        chrome.storage.local.set({ darkMode: false });
+        lightModeIcon.style.display = 'block';
+        darkModeIcon.style.display = 'none';
+    });
 
     // Load and display count
     function updateCount() {
@@ -14,11 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Update count every second
+
     updateCount();
     setInterval(updateCount, 1000);
 
-    // Increment/Decrement buttons
+
     document.getElementById('increase').addEventListener('click', function() {
         chrome.storage.local.get(['count'], function(result) {
             chrome.storage.local.set({
@@ -35,12 +63,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close button
+
     document.getElementById('close').addEventListener('click', function() {
         window.close();
     });
 
-    // Dragging functionality
+
     dragHandle.addEventListener('mousedown', dragStart);
     document.addEventListener('mousemove', drag);
     document.addEventListener('mouseup', dragEnd);
