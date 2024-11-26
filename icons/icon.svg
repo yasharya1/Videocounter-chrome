@@ -1,0 +1,22 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background rounded square -->
+  <rect width="128" height="128" rx="24" fill="#FFFFFF" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
+  
+  <!-- Outer circle/timer marks -->
+  <circle cx="64" cy="64" r="48" fill="none" stroke="#E0E0E0" stroke-width="8"/>
+  
+  <!-- Red progress marks -->
+  <path d="M64 16A48 48 0 0 1 112 64" stroke="#FF0000" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Center play button circle -->
+  <circle cx="64" cy="64" r="32" fill="#FF0000"/>
+  
+  <!-- Play triangle -->
+  <path d="M58 48L78 64L58 80Z" fill="#FFFFFF"/>
+  
+  <!-- 99+ counter -->
+  <g transform="translate(75, 85)">
+    <rect width="30" height="20" rx="10" fill="#333333"/>
+    <text x="15" y="15" font-size="12" fill="#FFFFFF" text-anchor="middle" font-family="Arial, sans-serif">99+</text>
+  </g>
+</svg> 
